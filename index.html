@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title> ¯\_(ツ)_/¯ </title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="dist/css/main.css">
+
+		<!--
+			Do I work in src or dist?
+			Newbies work in dist, smarty-pants gulp users work in src.
+			Go here to learn more:
+			https://stackoverflow.com/questions/23730882/what-is-the-role-of-src-and-dist-folders
+		-->
+		
+	</head>
+	<body>
+		
+		<div class="content">
+			<img class="logo" src="dist/img/logo.png" alt="Circus Logo">
+			<div class="foreground">
+			<form></form>
+			<input type="text" name="term" id="term" value="beer">
+			<input type="text" name="location" id="location" value="Atlanta, GA">
+			Price Level:
+			<label>
+				<input type="checkbox" name="price" value="1" class="price">$
+			</label>
+			<label>
+				<input type="checkbox" name="price" value="2" class="price">$$
+			</label>
+			<label>
+				<input type="checkbox" name="price" value="3" class="price">$$$
+			</label>
+			<label>
+				<input type="checkbox" name="price" value="4" class="price">$$$$
+			</label>
+			<a id="search" href="#">Search</a>
+		</form>
+			</div>
+			<div class="background"></div>
+		</div>
+
+		<div id="map"></div>
+		<ul id="results"></ul>
+
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script>
+		var GoogleMapModule = (function() {
+
+			var map;
+			function initMap() {
+				var circusPosition = {lat: 33.813245, lng: -84.362171};
+				map = new google.maps.Map(document.getElementById('map'), {
+					center: circusPosition,
+					zoom: 16
+				});
+
+				var infoWindow = new google.maps.InfoWindow({
+					content: 'Welcome to the circus!'
+				});
+
+				var marker = new google.maps.Marker({
+					position: circusPosition,
+					map: map
+				});
+				marker.addListener('click', function() {
+					infoWindow.open(map, marker);
+				})
+			}
+
+			// function showMarkers(locationsArray) {
+
+			// }
+
+			return {
+				initMap: initMap,
+				// showMarkers: showMarkers
+			}
+		})();
+		</script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIW-LO2qsWhrwf8UNlOQdHwTehw0Rs7gQ&callback=GoogleMapModule.initMap"
+		async defer></script>
+		<script src="dist/js/main.js"></script>
+
+	</body>
+</html>
