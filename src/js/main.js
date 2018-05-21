@@ -79,6 +79,7 @@
 				name: business.name,
 				lat: business.coordinates.latitude, 
 				lng: business.coordinates.longitude,
+				phone: business.phone,
 			}    
 			locationsArray.push(coordinate)
 		})

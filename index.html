@@ -52,7 +52,7 @@
 		var GoogleMapModule = (function() {
 
 			var map;
-			markers = [];
+			var markers = [];
 			function initMap() {
 				var circusPosition = {lat: 33.813245, lng: -84.362171};
 				map = new google.maps.Map(document.getElementById('map'), {
@@ -78,27 +78,26 @@
 			let showMarkers = function(locationsArray) {
 
 				bounds = new google.maps.LatLngBounds();
-				while(markers.length) {
-					markers.pop().setMap(null); 
-				}
 				
 
-
-				locationsArray.forEach(function (marker) {
-					var position = new google.maps.LatLng(marker.lat, marker.lng);
-						markers.push(
-							new google.maps.Marker({
-								position: position,
-								map: map,
-								animation: google.maps.Animation.DROP,
-							})
-						); 
-
-					google.maps.event.addListener( marker, 'click', function() {
-						infoWindow.setContent(marker.name);
-						infoWindow.open(map, marker);
+				locationsArray.forEach(function (location) {
+					var position = new google.maps.LatLng(location.lat, location.lng);
+					var marker = new google.maps.Marker({
+						position: position,
+						map: map,
+						animation: google.maps.Animation.DROP,
+					})
+						
+					var infoWindow = new google.maps.InfoWindow({
+						content: location.name + "<br>" + location.phone
 
 					});
+						marker.addListener('click', function() {
+							infoWindow.open(map, marker);
+						})
+						markers.push(position)
+
+
 										
 					bounds.extend(position);
 				});

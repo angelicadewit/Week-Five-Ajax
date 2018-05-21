@@ -78,7 +78,8 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 			var coordinate = {
 				name: business.name,
 				lat: business.coordinates.latitude,
-				lng: business.coordinates.longitude
+				lng: business.coordinates.longitude,
+				phone: business.phone
 			};
 			locationsArray.push(coordinate);
 		});
