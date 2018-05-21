@@ -157,6 +157,11 @@ body {
 #map {
 	height: 300px;
 	width: 500px;
+	padding-right: 30px;
+}
+
+.info {
+	display: flex;
 }
 
 /*# sourceMappingURL=main.css.map */

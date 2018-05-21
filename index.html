@@ -44,8 +44,10 @@
 			<div class="background"></div>
 		</div>
 
-		<div id="map"></div>
-		<ul id="results"></ul>
+		<div class="info">
+			<div id="map"></div>
+			<ul id="results"></ul>
+		</div>
 
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<script>
@@ -75,15 +77,14 @@
 				})
 			}
 
-			let showMarkers = function(locationsArray) {
-
-				function deleteMarkers() {
+			let deleteMarkers = function () {
 					for (var i = 0; i < markers.length; i++) {
 						markers[i].setMap(null);
 					}
 					markers = [];
 				};
 
+			let showMarkers = function(locationsArray) {
 				deleteMarkers()
 				bounds = new google.maps.LatLngBounds();
 				
@@ -103,7 +104,7 @@
 						marker.addListener('click', function() {
 							infoWindow.open(map, marker);
 						})
-						markers.push(position)
+						markers.push(marker)
 
 
 										
