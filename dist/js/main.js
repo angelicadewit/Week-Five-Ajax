@@ -73,51 +73,21 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 	};
 
 	var sendDataToGoogle = function sendDataToGoogle(response) {
+		var locationsArray = [];
 		response.data.businesses.forEach(function (business) {
 			var coordinate = {
 				name: business.name,
 				lat: business.coordinates.latitude,
 				lng: business.coordinates.longitude
 			};
-			console.log(coordinate);
-			GoogleMapModule.createMarker(coordinate.lat, coordinate.long, coordinate.name);
+			locationsArray.push(coordinate);
 		});
+		console.table(locationsArray);
+		GoogleMapModule.showMarkers(locationsArray);
+	};
+
+	return {
+		sendDataToGoogle: sendDataToGoogle
 	};
 })();
-
-// var GoogleModule = (function() {
-
-// 	var map;
-// 	function initMap() {
-// 		var circusPosition = {
-// 			lat: 33.813245, 
-// 			lng: -84.362171
-// 		};
-// 		map = new google.maps.Map(document.getElementById('map'), {
-// 			center: circusPosition,
-// 			zoom: 16
-// 		});
-
-// 		var infoWindow = new google.maps.InfoWindow({
-// 			content: 'Welcome to the circus!'
-// 		});
-
-// 		var marker = new google.maps.Marker({
-// 			position: circusPosition,
-// 			map: map
-// 		});
-// 		marker.addListener('click', function() {
-// 			infoWindow.open(map, marker);
-// 		})
-// 	}
-
-// 	function showMarkers(locationsArray) {
-
-// 	}
-
-// 	return {
-// 		initMap: initMap,
-// 		showMarkers: showMarkers
-// 	}
-// })();
 //# sourceMappingURL=main.js.map

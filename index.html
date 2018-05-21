@@ -72,13 +72,28 @@
 				})
 			}
 
-			// function showMarkers(locationsArray) {
 
-			// }
+			let showMarkers = function(locationsArray){
+			markers = [];
+			bounds = new google.maps.LatLngBounds();
+			locationsArray.forEach(function (marker) {
+				var position = new google.maps.LatLng(marker.lat, marker.lng);
+					markers.push(
+						new google.maps.Marker({
+							position: position,
+							map: map,
+							animation: google.maps.Animation.DROP
+						})
+					);
+				bounds.extend(position);
+			});
+			map.fitBounds(bounds);
+			}
+
 
 			return {
 				initMap: initMap,
-				// showMarkers: showMarkers
+				showMarkers: showMarkers
 			}
 		})();
 		</script>
