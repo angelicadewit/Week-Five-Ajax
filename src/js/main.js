@@ -82,7 +82,7 @@
 			}    
 			locationsArray.push(coordinate)
 		})
-		console.table(locationsArray)
+		// console.table(locationsArray)
 		GoogleMapModule.showMarkers(locationsArray)
 	}
 	

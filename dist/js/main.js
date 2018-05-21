@@ -82,7 +82,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 			};
 			locationsArray.push(coordinate);
 		});
-		console.table(locationsArray);
+		// console.table(locationsArray)
 		GoogleMapModule.showMarkers(locationsArray);
 	};
 
